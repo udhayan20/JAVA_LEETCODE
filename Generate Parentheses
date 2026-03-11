@@ -1,0 +1,22 @@
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> res = new ArrayList<>();
+        solve(res, "", 0, 0, n);
+        return res;
+    }
+
+    private void solve(List<String> res, String s, int a, int c, int n) {
+        if (s.length() == n * 2) {
+            res.add(s);
+            return;
+        }
+
+        if (a < n) {
+            solve(res, s + "(", a + 1, c, n);
+        }
+
+        if (c < a) {
+            solve(res, s + ")", a, c + 1, n);
+        }
+    }
+}
