@@ -1,0 +1,31 @@
+class Solution 
+{
+    public int maxDistance(int[] nums1, int[] nums2) 
+    {
+        int res = 0;
+        int m = nums1.length;
+        int n = nums2.length;
+
+        for (int i = 0; i < m; i++) 
+        {
+            int low = i;
+            int high = n - 1;
+
+            while (low <= high) 
+            {
+                int mid = low + (high - low) / 2;
+
+                if (nums2[mid] >= nums1[i]) 
+                {
+                    res = Math.max(res, mid - i);
+                    low = mid + 1;
+                } 
+                else 
+                {
+                    high = mid - 1;
+                }
+            }
+        }
+        return res;
+    }
+}
